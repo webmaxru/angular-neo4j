@@ -1,0 +1,27 @@
+{
+  "author": {
+    "name": "salnikov@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/webmaxru/angular-neo4j/issues"
+  },
+  "name": "angular-neo4j",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webmaxru/angular-neo4j.git"
+  },
+  "homepage": "https://github.com/webmaxru/angular-neo4j#readme",
+  "keywords": ["angular", "graph", "neo4j", "cypher"],
+  "license": "MIT",
+  "main": "./bundles/angular-neo4j.umd.js",
+  "es2015": "./esm2015/angular-neo4j.js",
+  "module": "./esm5/angular-neo4j.es5.js",
+  "typings": "./angular-neo4j.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^5.0.0",
+    "@angular/common": "^5.0.0",
+    "@angular/forms": "^5.0.0",
+    "neo4j-driver": "^1.6.0"
+  }
+}

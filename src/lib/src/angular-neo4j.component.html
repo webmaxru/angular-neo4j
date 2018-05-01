@@ -1,0 +1,54 @@
+<form [formGroup]="loginForm" (ngSubmit)="connect()">
+  <label>URL:
+    <br />
+    <input formControlName="url" placeholder="bolt://host:port">
+  </label>
+  <br />
+  <br />
+  <label>Username:
+    <br />
+    <input formControlName="username">
+  </label>
+  <br />
+  <br />
+  <label>Password:
+    <br />
+    <input formControlName="password">
+  </label>
+  <br />
+  <br />
+  <label>
+    <input formControlName="encrypted" type="checkbox"> Encrypted
+  </label>
+  <br />
+  <br />
+  <button type="submit">Connect</button>
+  <button type="button" (click)="disconnect()">Disconnect</button>
+</form>
+
+<br />
+<br />
+
+<form [formGroup]="queryForm" (ngSubmit)="run()">
+  <label>Cypher Query:
+    <br />
+    <textarea formControlName="query" placeholder="MATCH (o:Object {attrib: {value}}) RETURN o"></textarea>
+  </label>
+  <br />
+  <br />
+  <label>Parameters JSON:
+    <br />
+    <textarea formControlName="params" placeholder='{ "value": "value" }'></textarea>
+  </label>
+  <br />
+  <br />
+  <button type="submit">Run</button>
+</form>
+
+<br />
+<br />
+
+Results:
+<pre>
+{{results | json}}
+</pre>

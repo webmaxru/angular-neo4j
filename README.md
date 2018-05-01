@@ -1,27 +1,75 @@
-# AngularNeo4j
+### Use the power of Neo4j graph database in your Angular app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.6.
+#### Installation
 
-## Development server
+To install this library, run:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```bash
+$ npm install angular-neo4j --save
+```
+```js
+import { AngularNeo4jModule } from 'angular-neo4j';
 
-## Code scaffolding
+@NgModule({
+  imports: [
+    AngularNeo4jModule
+  ]
+})
+export class AppModule { }
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Usage
+The module includes a service and a design-free component utilizing this service: login form and query form. You are welcome to use this component as a foundation for your custom one.
 
-## Build
+The fastest way to test everything:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```html
+  <angular-neo4j></angular-neo4j>
+```
 
-## Running unit tests
+Use the service in your own component:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```javascript
+  import { AngularNeo4jService } from './angular-neo4j.service';
+  ...
+  constructor(pprivate neo4j: AngularNeo4jService) {}
+```
+- `connect( url: string, username: string, password: string, encrypted?: boolean )` - Connect to your Neo4j instance
+```javascript
 
-## Running end-to-end tests
+  const url = 'bolt://localhost:7687';
+  const username = 'neo4j';
+  const password = 'neo4j';
+  const encrypted = true;
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+  this.neo4j
+      .connect(
+        url,
+        username,
+        password,
+        encrypted
+      )
+      .then(driver => {
+        if (driver) {
+          console.log(`Successfully connected to ${url}`);
+        }
+      });
+```
+- `run( query: string, params?: object)` - Run the query with parameters. Returns array of records.
+```javascript
 
-## Further help
+  const query = 'MATCH (n:USER {name: {name}}) RETURN n';
+  const params = { name: 'bob' };
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  this.neo4j.run(query, params).then(res => {
+      console.log(res);
+    });
+```
+- `disconnect()` - Close the active driver
+```javascript
+  this.neo4j.disconnect()
+```
+
+## License
+
+MIT © [Maxim Salnikov](mailto:salnikov@gmail.com)
