@@ -1,12 +1,14 @@
 {
   "author": {
-    "name": "salnikov@gmail.com"
+    "name": "Maxim Salnikov",
+    "email": "salnikov@gmail.com"
   },
   "bugs": {
     "url": "https://github.com/webmaxru/angular-neo4j/issues"
   },
   "name": "angular-neo4j",
-  "version": "0.1.0",
+  "description": "Neo4j Bolt driver wrapper for Angular",
+  "version": "0.6.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/webmaxru/angular-neo4j.git"
@@ -18,10 +20,12 @@
   "es2015": "./esm2015/angular-neo4j.js",
   "module": "./esm5/angular-neo4j.es5.js",
   "typings": "./angular-neo4j.d.ts",
+  "dependencies": {
+    "neo4j-driver": "^1.6.0"
+  },
   "peerDependencies": {
     "@angular/core": "^5.0.0",
     "@angular/common": "^5.0.0",
-    "@angular/forms": "^5.0.0",
-    "neo4j-driver": "^1.6.0"
+    "@angular/forms": "^5.0.0"
   }
 }

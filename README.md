@@ -1,4 +1,6 @@
-### Use the power of Neo4j graph database in your Angular app
+### Neo4j Bolt driver wrapper for Angular
+
+Use Neo4j Bolt driver for JavaScript from your Angular application. A special browser version of the driver supports connecting to Neo4j over WebSockets.
 
 #### Installation
 
@@ -19,7 +21,7 @@ export class AppModule { }
 ```
 
 ### Usage
-The module includes a service and a design-free component utilizing this service: login form and query form. You are welcome to use this component as a foundation for your custom one.
+The module includes a service and a design-free component using this service: login form and query form. You are welcome to use this component as a foundation for your custom one.
 
 The fastest way to test everything:
 
@@ -32,9 +34,9 @@ Use the service in your own component:
 ```javascript
   import { AngularNeo4jService } from './angular-neo4j.service';
   ...
-  constructor(pprivate neo4j: AngularNeo4jService) {}
+  constructor(private neo4j: AngularNeo4jService) {}
 ```
-- `connect( url: string, username: string, password: string, encrypted?: boolean )` - Connect to your Neo4j instance
+- `connect( url: string, username: string, password: string, encrypted?: boolean )` - Connect to your Neo4j instance. Returns a promise with a driver instance.
 ```javascript
 
   const url = 'bolt://localhost:7687';
@@ -55,7 +57,7 @@ Use the service in your own component:
         }
       });
 ```
-- `run( query: string, params?: object)` - Run the query with parameters. Returns array of records.
+- `run( query: string, params?: object)` - Run the query with parameters. Returns a promise with array of records.
 ```javascript
 
   const query = 'MATCH (n:USER {name: {name}}) RETURN n';
@@ -65,10 +67,14 @@ Use the service in your own component:
       console.log(res);
     });
 ```
-- `disconnect()` - Close the active driver
+- `disconnect()` - Close the active driver.
 ```javascript
   this.neo4j.disconnect()
 ```
+
+### Note on security
+
+Do not hardcode your Neo4j username and password in the Angular app - always use login form to authenticate.
 
 ## License
 

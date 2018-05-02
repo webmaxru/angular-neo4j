@@ -1,6 +1,11 @@
 {
+  "author": {
+    "name": "Maxim Salnikov",
+    "email": "salnikov@gmail.com"
+  },
   "name": "angular-neo4j",
-  "version": "0.0.0",
+  "description": "Neo4j Bolt driver wrapper for Angular",
+  "version": "0.6.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -10,7 +15,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:lib": "gulp --gulpfile gulpfile.lib.js",
-    "version": "sync-json -v --property version --source package.json src/lib/package.json"
+    "version":
+      "sync-json -v --property version --source package.json src/lib/package.json"
   },
   "private": true,
   "dependencies": {
