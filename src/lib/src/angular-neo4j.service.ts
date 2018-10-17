@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
-import neo4j from 'neo4j-driver/lib/browser/neo4j-web';
+import neo4j from "neo4j-driver/lib/browser/neo4j-web";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AngularNeo4jService {
   driver;
@@ -49,7 +49,7 @@ export class AngularNeo4jService {
   getDriver() {
     if (!this.driver) {
       throw new Error(
-        'A connection has not been made to Neo4j. You will need to run `connect(url, username, password)` before you can get the current driver instance'
+        "A connection has not been made to Neo4j. You will need to run `connect(url, username, password)` before you can get the current driver instance"
       );
     }
     return this.driver;
@@ -61,7 +61,7 @@ export class AngularNeo4jService {
   getSession() {
     if (!this.driver) {
       throw new Error(
-        'A connection has not been made to Neo4j. You will need to run `connect(url, username, password)` before you can create a new session'
+        "A connection has not been made to Neo4j. You will need to run `connect(url, username, password)` before you can create a new session"
       );
     }
 
@@ -79,7 +79,11 @@ export class AngularNeo4jService {
         session.close();
 
         return results.records.map(record => {
-          return this.processRecord(record.get(0));
+          var r = [];
+          for (var i = 0; i < record.length; i++) {
+            r[i] = this.processRecord(record.get(i));
+          }
+          return r;
         });
       },
       err => {
@@ -90,18 +94,18 @@ export class AngularNeo4jService {
   }
 
   private processInteger(integer) {
-    if (integer.constructor.name === 'Integer') {
+    if (integer.constructor.name === "Integer") {
       return integer.toNumber();
     }
     return integer;
   }
 
   private processRecord(record) {
-    if (record.constructor.name === 'Integer') {
+    if (record.constructor.name === "Integer") {
       return record.toNumber();
     }
 
-    if (record.constructor.name === 'Path') {
+    if (record.constructor.name === "Path") {
       record.start.identity = this.processInteger(record.start.identity);
       record.end.identity = this.processInteger(record.end.identity);
       record.segments = record.segments.map(segment => {
@@ -123,14 +127,14 @@ export class AngularNeo4jService {
       return record;
     }
 
-    if (record.constructor.name === 'Relationship') {
+    if (record.constructor.name === "Relationship") {
       record.identity = this.processInteger(record.identity);
       record.start = this.processInteger(record.start);
       record.end = this.processInteger(record.end);
       return record;
     }
 
-    if (record.constructor.name === 'Node') {
+    if (record.constructor.name === "Node") {
       record.identity = this.processInteger(record.identity);
       return record;
     }
