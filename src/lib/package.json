@@ -8,13 +8,18 @@
   },
   "name": "angular-neo4j",
   "description": "Neo4j Bolt driver wrapper for Angular",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/webmaxru/angular-neo4j.git"
   },
   "homepage": "https://github.com/webmaxru/angular-neo4j#readme",
-  "keywords": ["angular", "graph", "neo4j", "cypher"],
+  "keywords": [
+    "angular",
+    "graph",
+    "neo4j",
+    "cypher"
+  ],
   "license": "MIT",
   "main": "./bundles/angular-neo4j.umd.js",
   "es2015": "./esm2015/angular-neo4j.js",
