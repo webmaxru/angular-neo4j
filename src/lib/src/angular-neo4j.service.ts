@@ -101,6 +101,10 @@ export class AngularNeo4jService {
   }
 
   private processRecord(record) {
+    if (!record) {
+      return null;
+    }
+
     if (record.constructor.name === 'Integer') {
       return record.toNumber();
     }
