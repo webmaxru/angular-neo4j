@@ -8,7 +8,7 @@
   },
   "name": "angular-neo4j",
   "description": "Neo4j Bolt driver wrapper for Angular",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/webmaxru/angular-neo4j.git"
